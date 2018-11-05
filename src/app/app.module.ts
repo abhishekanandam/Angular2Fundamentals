@@ -17,11 +17,11 @@ import {
 import { EventsAppComponent } from './events-app.component';
 import { NavBarComponent } from './nav/navbar.component';
 import { TOASTR_TOKEN, Toastr, JQ_TOKEN, CollapsibleWellComponent, SimpleModelComponent, ModalTriggerDirective } from './common/index';
-import { RouterModule } from '@angular/router';
 import { appRoutes } from 'router';
 import { Error404Component } from './errors/404.component';
 import { AuthService } from './user/auth.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 
 let toastr: Toastr = window['toastr'];
