@@ -5,12 +5,12 @@
     <div class="form-group" >
       <label for="userName">User Name:</label>
       <em *ngIf="loginForm.controls.userName?.invalid">Required</em>
-      <input (ngModel)="userName" id="userName" type="text" class="form-control" placeholder="User Name..." required/>
+      <input name="username" (ngModel)="userName" id="userName" type="text" class="form-control" placeholder="User Name..." required/>
     </div>
     <div class="form-group" >
       <label for="password">Password:</label>
       <em *ngIf="loginForm.controls.password?.invalid">Required</em>
-      <input (ngModel)="password" id="password" type="password" class="form-control" placeholder="Password..." required/>
+      <input name="password" (ngModel)="password" id="password" type="password" class="form-control" placeholder="Password..." required/>
     </div>
         
     <button type="submit" [disabled]="!loginForm.valid" class="btn btn-primary">Login</button>

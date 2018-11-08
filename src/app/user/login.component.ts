@@ -14,14 +14,14 @@ import { Router } from "@angular/router";
 export class LoginComponent{
 
     userName: string;
-    passwordd: string;
+    password: string;
 
     constructor(private authService:AuthService, private router:Router){
 
     }
 
     login(formValues){
-        console.log(formValues);
+        //console.log("formvalues: " + formValues.userName);
         this.authService.loginUser(formValues.userName, formValues.password);
         this.router.navigate(['events']);
     }

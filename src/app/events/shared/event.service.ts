@@ -1,11 +1,16 @@
 import { Injectable, EventEmitter } from "@angular/core";
 import { Subject, Observable } from "rxjs";
 import { IEvent, ISession } from "./event.model";
-import { Session } from "inspector";
+import { HttpClient } from "@angular/common/http";
+
 
 
 @Injectable()
 export class EventService {
+
+    constructor(private http: HttpClient){
+
+    }
 
     getEvents(): Observable<IEvent[]>{
       let subject = new Subject<IEvent[]>();
@@ -40,19 +45,22 @@ export class EventService {
       EVENTS.forEach(event => {
         
         let machingSessions = event.sessions.filter(s => s.name.toLocaleLowerCase().indexOf(term) > -1);
-        machingSessions = machingSessions.map((Session:any) => {
-          Session.id = event.id;
-          return Session;
+        console.log("matching sessions: " + JSON.stringify(machingSessions));
+        machingSessions = machingSessions.map((session:any) => {
+          session.id = event.id;
+          return session;
         });
         results = results.concat(machingSessions);
+        
       })
 
       let emitter = new EventEmitter(true);
-      setTimeout(()=>{ sub.next(results); sub.complete();
+      setTimeout(()=>{ 
+        sub.next(results); sub.complete();
 
         emitter.emit(results);
       }, 100);
-
+      //console.log("sub: " + JSON.stringify(results));
       return sub;
     }
 }
