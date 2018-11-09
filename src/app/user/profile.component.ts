@@ -27,6 +27,10 @@ export class ProfileComponent implements OnInit {
         })
     }
 
+    logout(){
+        this.router.navigate(['user/login'])
+    }
+
     cancel(){
         this.router.navigate(['events'])
     }

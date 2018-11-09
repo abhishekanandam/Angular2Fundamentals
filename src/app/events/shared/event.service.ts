@@ -2,6 +2,7 @@ import { Injectable, EventEmitter } from "@angular/core";
 import { Subject, Observable } from "rxjs";
 import { IEvent, ISession } from "./event.model";
 import { HttpClient } from "@angular/common/http";
+import { catchError } from "rxjs/operators";
 
 
 
@@ -12,11 +13,22 @@ export class EventService {
 
     }
 
+
+
     getEvents(): Observable<IEvent[]>{
+
+      // return this.http.get<IEvent[]>('/api/events')
+      //   .pipe(catchError(this.handleError('getEvent error')))
+
       let subject = new Subject<IEvent[]>();
       setTimeout(() => { subject.next(EVENTS); subject.complete(); });
-        return subject;
+      return subject;
     }
+
+    // private handleError(error:any){
+    //   console.log('error occured');
+    //   return error;
+    // }
 
     getEvent(id: number): IEvent{
       console.log(EVENTS.find(event => event.id === id))
