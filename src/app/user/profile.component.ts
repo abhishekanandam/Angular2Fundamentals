@@ -1,4 +1,4 @@
-import { Component, OnInit, inject, Inject } from '@angular/core'
+import { Component, OnInit, inject, Inject } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AuthService } from './auth.service';
 import { Router } from '@angular/router';
@@ -9,34 +9,34 @@ import { Toastr, TOASTR_TOKEN } from '../common/toastr.service';
   templateUrl: `./profile.component.html`,
 })
 export class ProfileComponent implements OnInit {
-       
-    constructor(private authService:AuthService, 
-            private router:Router,
-            @Inject(TOASTR_TOKEN) private toastr: Toastr){
+
+    constructor(private authService: AuthService,
+            private router: Router,
+            @Inject(TOASTR_TOKEN) private toastr: Toastr) {
 
     }
 
-    profileForm: FormGroup
-    ngOnInit(){
+    profileForm: FormGroup;
+    ngOnInit() {
 
-        let firstName = new FormControl(this.authService.currentUser.firstName, Validators.required)
-        let lastName = new FormControl(this.authService.currentUser.lastName, Validators.required)
+        const firstName = new FormControl(this.authService.currentUser.firstName, Validators.required);
+        const lastName = new FormControl(this.authService.currentUser.lastName, Validators.required);
         this.profileForm = new FormGroup({
             firstName: firstName,
             lastName: lastName
-        })
+        });
     }
 
-    logout(){
-        this.router.navigate(['user/login'])
+    logout() {
+        this.router.navigate(['user/login']);
     }
 
-    cancel(){
-        this.router.navigate(['events'])
+    cancel() {
+        this.router.navigate(['events']);
     }
 
-    saveProfile(formValues){
-        if(this.profileForm.valid){
+    saveProfile(formValues) {
+        if (this.profileForm.valid) {
             this.authService.updateCurrentUser(formValues.firstName, formValues.lastName);
             this.toastr.success('profile saved!!');
             //this.router.navigate(['events']);

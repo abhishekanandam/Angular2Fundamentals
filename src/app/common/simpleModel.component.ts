@@ -1,5 +1,5 @@
-import { Component, Input, ViewChild, ElementRef, Inject } from "@angular/core";
-import { JQ_TOKEN } from "./jquery.service";
+import { Component, Input, ViewChild, ElementRef, Inject } from '@angular/core';
+import { JQ_TOKEN } from './jquery.service';
 
 
 @Component({
@@ -21,25 +21,25 @@ import { JQ_TOKEN } from "./jquery.service";
             </div>
         </div>
     `,
-    styles:[
+    styles: [
         `
         .modal-body { height: 250px; overflow-y: scroll; }
         `
     ]
 })
-export class SimpleModelComponent{
+export class SimpleModelComponent {
 
     @Input() title: string;
     @Input() elementId: string;
     @Input() closeOnBodyClick: string;
     @ViewChild('modalContainer') containerEl: ElementRef;
 
-    constructor(@Inject(JQ_TOKEN) private $: any){
+    constructor(@Inject(JQ_TOKEN) private $: any) {
 
     }
 
-    closeModal(){
-        if(this.closeOnBodyClick.toLocaleLowerCase() === "true"){
+    closeModal() {
+        if (this.closeOnBodyClick.toLocaleLowerCase() === 'true') {
             this.$(this.containerEl.nativeElement).modal('hide');
         }
     }

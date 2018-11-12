@@ -1,4 +1,4 @@
-import { Component, Input } from "@angular/core";
+import { Component, Input } from '@angular/core';
 
 
 @Component({
@@ -12,12 +12,12 @@ import { Component, Input } from "@angular/core";
     </div>
     `
 })
-export class CollapsibleWellComponent{
+export class CollapsibleWellComponent {
 
-    
-    visible:boolean = true;
 
-    toggleContent(){
+    visible = true;
+
+    toggleContent() {
 
         this.visible = !this.visible;
     }

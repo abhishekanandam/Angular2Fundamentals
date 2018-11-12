@@ -1,10 +1,10 @@
-import { Component, Input, Output, EventEmitter } from "@angular/core";
-import { IEvent } from "./shared";
+import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { IEvent } from './shared';
 
 @Component({
     selector: 'event-thumbnail',
     templateUrl: './event-thumbnail.component.html',
-    styles:[`
+    styles: [`
         .green { color: #003300 !important; }
         .bold { font-weight: bold; }
         .thumbnail { min-height: 210px; }
@@ -12,22 +12,22 @@ import { IEvent } from "./shared";
     ]
 
 })
-export class EventThumbnailComponent{
+export class EventThumbnailComponent {
 
-    @Input() event: IEvent
-    @Output() eventClick = new EventEmitter()
+    @Input() event: IEvent;
+    @Output() eventClick = new EventEmitter();
 
-    logData(){
-        console.log("Template Variables");
+    logData() {
+        console.log('Template Variables');
     }
 
-    handleClickMe(){
+    handleClickMe() {
         this.eventClick.emit(this.event.name);
     }
 
-    getStartTimeClass(){
+    getStartTimeClass() {
 
-        const isEarlyStart = this.event && this.event.time === '8:00 am'
-        return {green: isEarlyStart, bold: isEarlyStart}
+        const isEarlyStart = this.event && this.event.time === '8:00 am';
+        return {green: isEarlyStart, bold: isEarlyStart};
     }
 }

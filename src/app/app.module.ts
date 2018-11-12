@@ -15,7 +15,7 @@ import {
   DurationPipe,
   UpvoteComponent,
   LocationValidator
-} from './events/index'
+} from './events/index';
 
 import { EventsAppComponent } from './events-app.component';
 import { NavBarComponent } from './nav/navbar.component';
@@ -28,8 +28,8 @@ import { RouterModule } from '@angular/router';
 import { VoterService } from './events/event-details/voter.service';
 
 
-let toastr: Toastr = window['toastr'];
-let jquery = window['$'];
+const toastr: Toastr = window['toastr'];
+const jquery = window['$'];
 
 @NgModule({
   declarations: [
@@ -57,9 +57,9 @@ let jquery = window['$'];
     RouterModule.forRoot(appRoutes)
   ],
   providers: [
-    EventService, 
+    EventService,
     { provide: TOASTR_TOKEN, useValue: toastr},
-    { provide: JQ_TOKEN, useValue: jquery}, 
+    { provide: JQ_TOKEN, useValue: jquery},
     EventRouterComponent,
     EventListResolver,
     AuthService,
@@ -70,9 +70,10 @@ let jquery = window['$'];
 })
 export class AppModule { }
 
-export function checkDirtyState(component:CreateEventComponent){
+export function checkDirtyState(component: CreateEventComponent) {
 
-  if(component.isDirty)
-    return window.confirm('You have not saved this event. Are you really want to cancel this event?');  
+  if (component.isDirty) {
+    return window.confirm('You have not saved this event. Are you really want to cancel this event?');
+  }
   return true;
 }

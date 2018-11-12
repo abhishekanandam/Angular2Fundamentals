@@ -1,23 +1,23 @@
-import { Component, OnInit } from "@angular/core";
-import { Router } from "@angular/router";
-import { EventService } from "./shared";
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { EventService } from './shared';
 
 
 
 @Component({
-    templateUrl:'create-event-component.html'
+    templateUrl: 'create-event-component.html'
 })
-export class CreateEventComponent implements OnInit{
+export class CreateEventComponent implements OnInit {
 
     newEvent: any;
     event: any;
 
-    isDirty:boolean = true;
-    constructor(private router:Router, private eventService:EventService){
+    isDirty = true;
+    constructor(private router: Router, private eventService: EventService) {
 
     }
 
-    ngOnInit(){
+    ngOnInit() {
 
         this.event = {
             name: 'ng Spectacular',
@@ -31,16 +31,16 @@ export class CreateEventComponent implements OnInit{
             },
             onlineUrl: 'http://ngSpectacular.com',
             imageUrl: 'http://ngSpectacular.com/logo.png'
-        }
+        };
     }
 
-    cancel(){
-        this.router.navigate(['/events'])
+    cancel() {
+        this.router.navigate(['/events']);
     }
 
-    saveEvent(formValues){
+    saveEvent(formValues) {
         //console.log(formValues);
         this.eventService.saveEvent(formValues);
-        this.router.navigate(['/events'])
+        this.router.navigate(['/events']);
     }
 }
